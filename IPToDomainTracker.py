@@ -8,7 +8,7 @@ import argparse
 
 def find_domain(text, ip):
     # 提取日期和域名的正则表达式
-    pattern = re.compile(r'<span class="date">(.*?)</span><a href="\/(.*?)" target="_blank">', re.DOTALL)
+    pattern = re.compile(r'<span class="date">(.*?)</span><a href="\/(.*?)/" target="_blank">', re.DOTALL)
     # 在文本中搜索匹配项
     matches = re.findall(pattern, text)
     # 输出匹配项
