@@ -8,11 +8,12 @@
 
 - **域名反查**: 对IP地址进行反向域名解析，获取相关的域名信息。
 - **icp备案**：对反查到的域名进行icp备案查询
+-  **域名归属地**：获取域名的归属地信息
 
 ## 安装
 
 ```
-git clone https://github.com/yourusername/ip-reverse-lookup.git
+git clone https://github.com/g0ubu1i/IPToDomainTracker.git
 cd IPToDomainTracker
 pip install -r requirements.txt
 ```
@@ -28,7 +29,7 @@ python IPToDomainTracker.py --list <target_ip_file>
 ## 示例
 
 ```
-python ip_reverse_lookup.py --list url.txt
+python IPToDomainTracker.py --list url.txt
 ```
 
 ## 限制
