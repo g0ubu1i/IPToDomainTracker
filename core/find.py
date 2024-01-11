@@ -6,13 +6,14 @@ def find_icp(domain):
     url = "https://api.uutool.cn/beian/icp/"
 
     headers = {
-        "Host": "api.uutool.cn",
+        "Host": 'api.uutool.cn',
         "Content-Length": "18",
         "Sec-Ch-Ua": '"Chromium";v="119", "Not?A_Brand";v="24"',
         "Accept": "application/json, text/javascript, */*; q=0.01",
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
         "Sec-Ch-Ua-Mobile": "?0",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.6045.159 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/119.0.6045.159 Safari/537.36",
         "Sec-Ch-Ua-Platform": '"Windows"',
         "Origin": "https://uutool.cn",
         "Sec-Fetch-Site": "same-site",
@@ -38,3 +39,13 @@ def find_icp(domain):
             return "未查询到备案信息"
     else:
         return "未查询到备案信息"
+
+
+def find_adress(ip):
+    url = "https://www.ip.cn/api/index?ip={}&type=1".format(ip)
+    response = requests.get(url)
+    try:
+        response_data = json.loads(response.text)
+    except json.decoder.JSONDecodeError:
+        return "未查询到地址信息"
+    return response_data['address']
