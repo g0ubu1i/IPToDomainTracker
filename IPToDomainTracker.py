@@ -6,21 +6,23 @@ from core import find
 import argparse
 
 
-def find_domain(text, ip):
+def find_domain(text, domain_ip):
     # 提取日期和域名的正则表达式
     pattern = re.compile(r'<span class="date">(.*?)</span><a href="\/(.*?)/" target="_blank">', re.DOTALL)
     # 在文本中搜索匹配项
-    matches = re.findall(pattern, text)
+    domain_matches = re.findall(pattern, text)
     # 输出匹配项
     result_lists = []
-    adress = find.find_adress(ip)
-    if matches:
-        for match in matches:
-            match = list((ip, adress,) + match)
-            name = find_company(match[3])
-            match.append(name)
-            result_lists.append(match)
+    adress = find.find_adress(domain_ip)
+    if domain_matches:
+        for domain_match in domain_matches:
+            domain_match = list((domain_ip, adress,) + domain_match)
+            name = find_company(domain_match[3])
+            domain_match.append(name)
+            result_lists.append(domain_match)
         return result_lists
+    else:
+        return [list((domain_ip, adress, "未查询到域名使用时间", "未查询到域名信息", "未查询到备案信息"))]
 
 
 def find_company(domain):
